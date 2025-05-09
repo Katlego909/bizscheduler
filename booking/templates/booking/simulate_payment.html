@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="min-h-screen bg-gray-100 px-4 py-10 flex items-center justify-center">
+  <div class="w-full max-w-lg bg-white rounded-xl shadow-lg p-6">
+    <h2 class="text-xl font-bold text-center text-gray-800 mb-4">Simulate Payment</h2>
+    <p class="text-sm text-gray-600 mb-6 text-center">
+      Booking for <strong>{{ booking.customer_name }}</strong><br>
+      <span class="text-gray-500">{{ booking.service.name }} on {{ booking.date }} at {{ booking.time }}</span>
+    </p>
+
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      {% for field in form %}
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <p class="text-red-500 text-sm">{{ field.errors|join:", " }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-semibold">
+        Submit Payment
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

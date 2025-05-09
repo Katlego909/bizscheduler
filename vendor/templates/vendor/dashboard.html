@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-8 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-6">
+      <div>
+        <h2 class="text-2xl font-semibold">Welcome, {{ vendor.business_name }}</h2>
+        <p class="text-sm text-gray-600">Manage your services and bookings</p>
+      </div>
+      <a href="{% url 'logout' %}" class="text-sm text-red-600 hover:underline mt-2 sm:mt-0">Logout</a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="text-lg font-semibold mb-2">Vendor Details</h3>
+        <p><strong>Email:</strong> {{ vendor.contact_email }}</p>
+        <p><strong>Phone:</strong> {{ vendor.phone }}</p>
+        <p><strong>Timezone:</strong> {{ vendor.timezone }}</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="text-lg font-semibold mb-2">Next Steps</h3>
+        <ul class="list-disc pl-5 text-sm text-gray-700">
+          <li>Set up your services</li>
+          <li>Configure your availability</li>
+        </ul>
+        
+          <!-- Share Your Link -->
+          <div class="mt-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Your Booking Page</label>
+            <div class="flex items-center gap-2 bg-gray-100 rounded-lg p-2">
+              <input type="text"
+                    readonly
+                    id="bookingLink"
+                    value="{{ request.scheme }}://{{ request.get_host }}{% url 'vendor_booking' vendor.slug %}"
+                    class="flex-1 bg-transparent text-sm text-gray-700 outline-none" />
+
+              <button onclick="copyLink()"
+                      class="text-sm px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition">
+                Copy
+              </button>
+
+              {% comment %} <a href="https://wa.me/?text={{ request.build_absolute_uri }}{% url 'vendor_booking' vendor.slug %}"
+                target="_blank"
+                title="Share via WhatsApp"
+                class="text-blue-600 hover:text-blue-800 text-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 2H4C2.9 2 2 2.9 2 4v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                </svg>
+              </a> {% endcomment %}
+            </div>
+            <p id="copyFeedback" class="text-xs text-green-600 mt-1 hidden">Copied to clipboard!</p>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function copyLink() {
+    const input = document.getElementById("bookingLink");
+    input.select();
+    input.setSelectionRange(0, 99999); // For mobile support
+
+    navigator.clipboard.writeText(input.value).then(function() {
+      const feedback = document.getElementById("copyFeedback");
+      feedback.classList.remove("hidden");
+
+      // Hide feedback after 2.5 seconds
+      setTimeout(() => {
+        feedback.classList.add("hidden");
+      }, 2500);
+    }).catch(function(err) {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+</script>
+
+</div>
+{% endblock %}

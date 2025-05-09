@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="min-h-screen py-10 bg-gray-50 px-4">
+  <div class="max-w-xl mx-auto bg-white shadow p-6 rounded-xl">
+    <h2 class="text-xl font-bold mb-4">Add a New Service</h2>
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      {% for field in form %}
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <p class="text-sm text-red-500">{{ field.errors|join:", " }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded">
+        Create Service
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!-- templates/emails/booking_reminder_client.html -->
+<!DOCTYPE html>
+<html>
+  <body style="font-family: sans-serif; line-height:1.6; color: #333;">
+    <h1 style="color:#D97706;">Booking Reminder</h1>
+    <p>Hi {{ client_name }},</p>
+    <p>This is a reminder for your upcoming appointment with <strong>{{ vendor.business_name }}</strong>:</p>
+    <ul>
+      <li>Service: {{ booking.service.name }}</li>
+      <li>Date: {{ booking.date|date:"F j, Y" }}</li>
+      <li>Time: {{ booking.time|time:"g:i a" }} ({{ time_to_start }})</li>
+    </ul>
+
+    {% if meeting_url %}
+      <p>You can join at: <a href="{{ meeting_url }}">{{ meeting_url }}</a></p>
+    {% endif %}
+
+    <p>See you soon!</p>
+  </body>
+</html>

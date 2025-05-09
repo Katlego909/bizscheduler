@@ -1,0 +1,46 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Django secret files
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# Node / Tailwind
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Django collectstatic (if used later)
+staticfiles/
+
+# Logs
+*.log
+
+# Coverage / Testing
+htmlcov/
+.coverage
+coverage.xml
+
+# Build artifacts
+*.egg-info/
+dist/
+build/
+
+# pycache inside subfolders
+**/__pycache__/

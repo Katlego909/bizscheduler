@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+  <div class="max-w-md w-full bg-white p-6 rounded-lg shadow">
+    {% if mode == 'register' %}
+      <h2 class="text-2xl font-bold mb-4">Register</h2>
+    {% else %}
+      <h2 class="text-2xl font-bold mb-4">Login</h2>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+      {% csrf_token %}
+      {# Preserve the next parameter if present #}
+      {% if next %}
+        <input type="hidden" name="next" value="{{ next }}">
+      {% endif %}
+
+      <!-- Always-show fields -->
+      <div>
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+
+      {% if mode == 'register' %}
+        <div>
+          {{ form.password1.label_tag }}
+          {{ form.password1 }}
+        </div>
+        <div>
+          {{ form.password2.label_tag }}
+          {{ form.password2 }}
+        </div>
+
+        <!-- Role selector as button toggle -->
+        <div>
+          <p class="font-medium mb-2">Role:</p>
+          <div id="role-toggle" class="flex rounded-lg overflow-hidden border border-gray-300">
+            {% for val, label in form.role.field.choices %}
+              <input 
+                type="radio" 
+                name="role" 
+                id="role-{{ val }}" 
+                value="{{ val }}" 
+                class="hidden" 
+                {% if form.role.value == val %}checked{% endif %}
+              >
+              <label 
+                for="role-{{ val }}" 
+                class="cursor-pointer px-4 py-2 flex-1 text-center text-gray-700 hover:bg-gray-100 transition
+                       {% if form.role.value == val %}bg-blue-600 text-white{% endif %}"
+              >
+                {{ label }}
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Vendor-only fields -->
+        <div class="vendor-only space-y-4">
+          <div>
+            {{ form.business_name.label_tag }}
+            {{ form.business_name }}
+          </div>
+          <div>
+            {{ form.contact_email.label_tag }}
+            {{ form.contact_email }}
+          </div>
+          <div>
+            {{ form.phone.label_tag }}
+            {{ form.phone }}
+          </div>
+          <div>
+            {{ form.logo.label_tag }}
+            {{ form.logo }}
+          </div>
+          <div>
+            {{ form.address.label_tag }}
+            {{ form.address }}
+          </div>
+        </div>
+      {% else %}
+        <div>
+          {{ form.password.label_tag }}
+          {{ form.password }}
+        </div>
+      {% endif %}
+
+      <button type="submit"
+              class="w-full py-2 rounded text-white bg-blue-600 hover:bg-blue-700">
+        {% if mode == 'register' %}Register{% else %}Login{% endif %}
+      </button>
+    </form>
+
+    {% if mode == 'register' %}
+      <p class="mt-4 text-sm">
+        Already have an account? <a href="{% url 'login' %}?next={{ next|urlencode }}" class="text-blue-600">Login</a>
+      </p>
+    {% else %}
+      <p class="mt-4 text-sm">
+        Don’t have an account? <a href="{% url 'register' %}?next={{ next|urlencode }}" class="text-blue-600">Register</a>
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+{% if mode == 'register' %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const vendorFields = document.querySelector('.vendor-only');
+    const roleInputs = document.querySelectorAll('#role-toggle input[name="role"]');
+    const roleLabels = document.querySelectorAll('#role-toggle label');
+
+    function updateToggleUI() {
+      roleInputs.forEach((input, i) => {
+        const label = roleLabels[i];
+        if (input.checked) {
+          label.classList.add('bg-blue-600','text-white');
+        } else {
+          label.classList.remove('bg-blue-600','text-white');
+        }
+      });
+    }
+
+    function toggleVendorFields() {
+      const selected = Array.prototype.find.call(roleInputs, r => r.checked)?.value;
+      vendorFields.style.display = (selected === 'vendor') ? 'block' : 'none';
+    }
+
+    updateToggleUI();
+    toggleVendorFields();
+
+    roleInputs.forEach(input =>
+      input.addEventListener('change', () => {
+        updateToggleUI();
+        toggleVendorFields();
+      })
+    );
+  });
+</script>
+{% endif %}
+{% endblock %}

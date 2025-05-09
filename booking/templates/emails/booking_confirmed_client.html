@@ -1,0 +1,19 @@
+<!-- templates/emails/booking_confirmed_client.html -->
+<!DOCTYPE html>
+<html>
+  <body style="font-family: sans-serif; line-height:1.6; color: #333;">
+    <h1 style="color:#059669;">Your Booking Is Confirmed!</h1>
+    <p>Hi {{ client_name }},</p>
+    <p>Your appointment for <strong>{{ service.name }}</strong> with <strong>{{ vendor.business_name }}</strong> has been confirmed:</p>
+    <ul>
+      <li>Date: {{ booking.date|date:"F j, Y" }}</li>
+      <li>Time: {{ booking.time|time:"g:i a" }}</li>
+    </ul>
+
+    {% if meeting_url %}
+      <p><strong>Join here:</strong> <a href="{{ meeting_url }}">{{ meeting_url }}</a></p>
+    {% endif %}
+
+    <p>Thank you for booking with us!</p>
+  </body>
+</html>

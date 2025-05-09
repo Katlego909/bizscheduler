@@ -1,0 +1,190 @@
+/* global.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* 1. Design Tokens */
+:root {
+    /* Colors */
+    --color-brand:      #1e40af;
+    --color-brand-light:#3b82f6;
+    --color-accent:     #047857;
+    --color-accent-light:#10b981;
+    --color-gray-50:    #f9fafb;
+    --color-gray-200:   #e5e7eb;
+    --color-gray-300:   #d1d5db;
+    --color-gray-500:   #6b7280;
+    --color-gray-700:   #374151;
+    --color-gray-900:   #111827;
+  
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+  
+    /* Border Radius */
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+  
+    /* Typography */
+    --font-sans: 'Inter', sans-serif;
+    /* --font-mono: 'Source Code Pro', monospace; */
+  }
+  
+  /* 2. Base Resets */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    font-family: var(--font-sans);
+    background: var(--color-gray-50);
+    color: var(--color-gray-900);
+    line-height: 1.5;
+  }
+  a {
+    color: var(--color-brand);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  
+  /* 3. Components */
+  
+  /* 3.1 Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .btn-primary {
+    background: var(--color-brand);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-light);
+  }
+  .btn-accent {
+    background: var(--color-accent);
+    color: white;
+  }
+  .btn-accent:hover {
+    background: var(--color-accent-light);
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-gray-300);
+    color: var(--color-gray-700);
+  }
+  .btn-outline:hover {
+    background: var(--color-gray-200);
+  }
+  
+  /* 3.2 Form Elements */
+  .form-group {
+    margin-bottom: var(--space-lg);
+  }
+  .form-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--color-gray-700);
+  }
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--color-gray-900);
+    transition: border-color 0.2s;
+  }
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: var(--color-brand);
+  }
+  .form-help {
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    margin-top: var(--space-xs);
+  }
+  .form-error {
+    font-size: 0.875rem;
+    color: #dc2626; /* red-600 */
+    margin-top: var(--space-xs);
+  }
+  
+  /* 3.3 Tables */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-lg);
+  }
+  .table th,
+  .table td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+  .table th {
+    background: var(--color-gray-100);
+    font-weight: 600;
+  }
+  .table tr:nth-child(even) {
+    background: var(--color-gray-50);
+  }
+  
+  /* 3.4 Cards */
+  .card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+  
+  /* 3.5 Alerts */
+  .alert {
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-size: 0.875rem;
+  }
+  .alert-info {
+    background: var(--color-gray-100);
+    color: var(--color-brand);
+  }
+  .alert-success {
+    background: #dcfce7; /* green-50 */
+    color: var(--color-accent);
+  }
+  .alert-warning {
+    background: #fef9c3; /* yellow-50 */
+    color: #92400e;       /* yellow-800 */
+  }
+  .alert-error {
+    background: #fee2e2; /* red-50 */
+    color: #b91c1c;      /* red-700 */
+  }
+  
+  /* 4. Responsive Helpers */
+  @media (max-width: 640px) {
+    .btn { width: 100%; }
+    .table { font-size: 0.875rem; }
+  }
+  

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: sans-serif; color: #333; line-height: 1.6;">
+    <h2 style="color: #2563eb;">You're Almost There!</h2>
+    <p>Hi there,</p>
+
+    <p>
+      You requested to book a service with <strong>{{ vendor.business_name }}</strong>.
+      To continue, just click the secure link below:
+    </p>
+
+    <p style="margin: 20px 0;">
+      <a href="{{ link }}" style="background-color: #2563eb; color: white; padding: 10px 16px; border-radius: 6px; text-decoration: none;">
+        Complete My Booking
+      </a>
+    </p>
+
+    <p>
+      Or copy and paste this URL into your browser:<br>
+      <span style="word-break: break-all; font-size: 0.9em; color: #444;">{{ link }}</span>
+    </p>
+
+    <p style="font-size: 0.9em; color: #777;">
+      This link will be valid for the next {{ expires_in_hours }} hours.
+    </p>
+
+    <hr style="margin: 2em 0; border: none; border-top: 1px solid #ddd;" />
+    <p style="font-size: 0.8em; color: #999;">If you didn't request this, feel free to ignore it.</p>
+  </body>
+</html>

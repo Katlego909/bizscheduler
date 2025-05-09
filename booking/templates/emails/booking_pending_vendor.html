@@ -1,0 +1,18 @@
+<!-- templates/emails/booking_pending_vendor.html -->
+<!DOCTYPE html>
+<html>
+  <body style="font-family: sans-serif; line-height:1.6; color: #333;">
+    <h1 style="color:#1E40AF;">New Booking Request</h1>
+    <p><strong>{{ booking.customer_name }}</strong> has requested a booking for:</p>
+    <ul>
+      <li>Service: {{ booking.service.name }}</li>
+      <li>Date & Time: {{ booking.date|date:"F j, Y" }} at {{ booking.time|time:"g:i a" }}</li>
+    </ul>
+    <p>
+      <a href="{{ manage_url }}"
+         style="background-color:#1E40AF; color:white; text-decoration:none; padding:10px 20px; border-radius:6px;">
+        Review Requests
+      </a>
+    </p>
+  </body>
+</html>

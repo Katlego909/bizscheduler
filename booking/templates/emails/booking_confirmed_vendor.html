@@ -1,0 +1,20 @@
+<!-- templates/emails/booking_confirmed_vendor.html -->
+<!DOCTYPE html>
+<html>
+  <body style="font-family: sans-serif; line-height:1.6; color: #333;">
+    <h1 style="color:#059669;">Booking Confirmed!</h1>
+    <p>Hello {{ booking.vendor.business_name }},</p>
+    <p>The following booking has just been <strong>confirmed</strong> by the vendor dashboard:</p>
+    <ul>
+      <li><strong>Client:</strong> {{ booking.customer_name }} ({{ booking.customer_email }})</li>
+      <li><strong>Service:</strong> {{ booking.service.name }}</li>
+      <li><strong>Date:</strong> {{ booking.date|date:"F j, Y" }}</li>
+      <li><strong>Time:</strong> {{ booking.time|time:"g:i a" }}</li>
+    </ul>
+    {% if booking.meeting_url %}
+      <p><strong>Meeting Link:</strong> <a href="{{ booking.meeting_url }}">{{ booking.meeting_url }}</a></p>
+    {% endif %}
+    <p>You can view all confirmed bookings in your <a href="{{ site_url }}{% url 'vendor_bookings' %}">dashboard</a>.</p>
+    <p>Thanks,<br/>The BizScheduler Team</p>
+  </body>
+</html>

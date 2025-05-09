@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
+  <div class="w-full max-w-md bg-white p-6 rounded-lg shadow">
+    <h2 class="text-2xl font-bold mb-4 text-center">
+      Book with {{ vendor.business_name }}
+    </h2>
+    <p class="mb-6 text-gray-600 text-center">
+      Enter your email below and we’ll send you a link to complete your booking.
+    </p>
+
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      {{ guest_form.guest_email.label_tag }}
+      {{ guest_form.guest_email }}
+
+      {% if guest_form.guest_email.errors %}
+        <p class="text-red-500 text-sm">
+          {{ guest_form.guest_email.errors.as_text|slice:"2:" }}
+        </p>
+      {% endif %}
+
+      <button type="submit"
+              class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg">
+        Send Me a Booking Link
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

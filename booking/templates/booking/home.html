@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- HERO -->
+<section class="relative bg-gradient-to-br from-indigo-50 via-white to-blue-50 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-32 grid lg:grid-cols-2 items-center gap-12 relative z-10">
+    
+    <!-- Left: Headline + CTA -->
+    <div>
+      <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+        Run Your Business on Autopilot with <span class="text-blue-600">BizScheduler</span>
+      </h1>
+      <p class="text-lg text-gray-700 mb-8 max-w-xl">
+        Smart scheduling software that lets your clients book, cancel, or reschedule—while you stay focused on delivering results.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="{% url 'register' %}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl shadow transition">
+          Get Started Free
+        </a>
+        <a href="#how-it-works" class="text-blue-700 font-semibold py-3 px-6 hover:underline transition">
+          See It in Action
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Illustration or Screenshot -->
+    <div class="relative">
+      <div class="relative z-10">
+        <img src="{% static 'images/dashboard-preview.jpg' %}" alt="App Preview" class="rounded-2xl shadow-lg border border-blue-100">
+      </div>
+      <!-- Floating UI icon or shape -->
+      <div class="absolute -top-6 -left-6 w-14 h-14 bg-white border border-blue-200 rounded-full flex items-center justify-center shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 4h10a2 2 0 012 2v9a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2z" />
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Decorative Blobs -->
+  <div class="absolute left-[-80px] top-[60px] w-80 h-80 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
+  <div class="absolute right-[-60px] bottom-[-40px] w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-pulse-slow"></div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-16">How It Works</h2>
+    <div class="grid md:grid-cols-3 gap-16 text-center">
+      <div class="relative hover:scale-[1.02] transition transform">
+        <div class="mb-4 text-5xl">🛠</div>
+        <h3 class="font-semibold text-xl mb-2">Set Up Services</h3>
+        <p class="text-gray-600">Create services with custom durations, buffers, and instructions in seconds.</p>
+      </div>
+      <div class="relative hover:scale-[1.02] transition transform">
+        <div class="mb-4 text-5xl">🔗</div>
+        <h3 class="font-semibold text-xl mb-2">Share Your Link</h3>
+        <p class="text-gray-600">Let clients instantly book via your custom link or website embed.</p>
+      </div>
+      <div class="relative hover:scale-[1.02] transition transform">
+        <div class="mb-4 text-5xl">📅</div>
+        <h3 class="font-semibold text-xl mb-2">Manage & Sync</h3>
+        <p class="text-gray-600">Automated reminders and calendar sync let you run your day stress-free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="bg-gray-50 py-24">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid gap-12 lg:grid-cols-2 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Powerful Features, Simple Setup</h2>
+        <p class="text-gray-600 mb-6">BizScheduler is built for speed and flexibility—whether you’re a solo creator or managing a full-service team.</p>
+        <ul class="space-y-4 text-gray-700">
+          <li class="flex items-start gap-3"><span class="text-2xl">⚙️</span><span><strong>Flexible Availability</strong> — Set hours per day, service, or team member.</span></li>
+          <li class="flex items-start gap-3"><span class="text-2xl">🔔</span><span><strong>Smart Reminders</strong> — Email or SMS reminders to reduce no-shows.</span></li>
+          <li class="flex items-start gap-3"><span class="text-2xl">🔗</span><span><strong>Instant Booking</strong> — Let clients book the exact time they want.</span></li>
+          <li class="flex items-start gap-3"><span class="text-2xl">📲</span><span><strong>Mobile-Friendly</strong> — Works seamlessly on any device.</span></li>
+        </ul>
+      </div>
+      <div>
+        <img src="{% static 'images/dashboard-preview-1.jpg' %}" alt="Dashboard" class="rounded-xl shadow-xl">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY USE CASES -->
+<section class="relative bg-white py-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-16">
+      Built for Every Industry
+    </h2>
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- Card 1: Consultants -->
+      <div class="bg-gradient-to-br from-blue-50 to-white border border-blue-200 shadow rounded-2xl p-6 hover:shadow-lg transition">
+        <div class="flex items-center justify-center w-14 h-14 bg-blue-100 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17a4 4 0 01-4-4V7a4 4 0 014-4h2a4 4 0 014 4v6a4 4 0 01-4 4h-2z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Consultants</h3>
+        <p class="text-gray-600 text-sm">Schedule 1-on-1 strategy sessions, onboarding calls, and workshops with ease.</p>
+      </div>
+
+      <!-- Card 2: Health & Wellness -->
+      <div class="bg-gradient-to-br from-green-50 to-white border border-green-200 shadow rounded-2xl p-6 hover:shadow-lg transition">
+        <div class="flex items-center justify-center w-14 h-14 bg-green-100 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8a8 8 0 100-16 8 8 0 000 16z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Health & Wellness</h3>
+        <p class="text-gray-600 text-sm">Therapists, coaches, and wellness professionals streamline client scheduling.</p>
+      </div>
+
+      <!-- Card 3: Agencies -->
+      <div class="bg-gradient-to-br from-yellow-50 to-white border border-yellow-200 shadow rounded-2xl p-6 hover:shadow-lg transition">
+        <div class="flex items-center justify-center w-14 h-14 bg-yellow-100 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Agencies</h3>
+        <p class="text-gray-600 text-sm">Run demos, discovery calls, and team syncs with calendar automation.</p>
+      </div>
+
+      <!-- Card 4: Beauty & Service -->
+      <div class="bg-gradient-to-br from-pink-50 to-white border border-pink-200 shadow rounded-2xl p-6 hover:shadow-lg transition">
+        <div class="flex items-center justify-center w-14 h-14 bg-pink-100 rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A2 2 0 0122 9.618v4.764a2 2 0 01-2.447 1.894L15 14m0-4v4m0-4L9 7.236M9 14v-4m0 4l-4.553 2.276A2 2 0 012 14.382V9.618a2 2 0 012.447-1.894L9 10" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Beauty & Service</h3>
+        <p class="text-gray-600 text-sm">Easily book appointments for salons, stylists, and personal care professionals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="bg-blue-600 text-white py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-extrabold text-center mb-16">What Our Users Are Saying</h2>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Testimonial Card 1 -->
+      <div class="bg-white text-gray-900 rounded-2xl shadow-lg p-8 relative overflow-hidden hover:shadow-xl transition">
+        <svg class="absolute top-6 left-6 h-10 w-10 text-blue-200 opacity-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h4m1 4h2a2 2 0 002-2V7a2 2 0 00-2-2h-6a2 2 0 00-2 2v2" />
+        </svg>
+        <p class="italic text-lg leading-relaxed relative z-10">“BizScheduler cut our admin time in half. Our booking flow feels modern and professional now.”</p>
+        <div class="mt-6 flex items-center gap-4 relative z-10">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-semibold text-blue-600">
+            L
+          </div>
+          <div>
+            <p class="font-semibold">Lebo M.</p>
+            <p class="text-sm text-gray-500">Business Coach</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="bg-white text-gray-900 rounded-2xl shadow-lg p-8 relative overflow-hidden hover:shadow-xl transition">
+        <svg class="absolute top-6 left-6 h-10 w-10 text-blue-200 opacity-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h4m1 4h2a2 2 0 002-2V7a2 2 0 00-2-2h-6a2 2 0 00-2 2v2" />
+        </svg>
+        <p class="italic text-lg leading-relaxed relative z-10">“We tripled our demo bookings in 30 days after switching to BizScheduler.”</p>
+        <div class="mt-6 flex items-center gap-4 relative z-10">
+          <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center font-semibold text-yellow-600">
+            Z
+          </div>
+          <div>
+            <p class="font-semibold">Zama Digital</p>
+            <p class="text-sm text-gray-500">Agency Team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INTEGRATIONS -->
+<section class="bg-white py-24">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Integrates Seamlessly With</h2>
+    <div class="flex flex-wrap justify-center items-center gap-10">
+      <img src="{% static 'images/google-calendar-logo.png' %}" alt="Google Calendar" class="h-8 grayscale hover:grayscale-0 transition">
+      <img src="{% static 'images/outlook-logo.png' %}" alt="Outlook" class="h-8 grayscale hover:grayscale-0 transition">
+      <img src="{% static 'images/zoom-logo.png' %}" alt="Zoom" class="h-8 grayscale hover:grayscale-0 transition">
+      <img src="{% static 'images/zapier-logo.png' %}" alt="Zapier" class="h-8 grayscale hover:grayscale-0 transition">
+      <img src="{% static 'images/stripe-logo.png' %}" alt="Stripe" class="h-8 grayscale hover:grayscale-0 transition">
+    </div>
+    <p class="text-sm text-gray-600 mt-6">+ more via Zapier, iCal, and our API.</p>
+  </div>
+</section>
+
+<!-- FAQS -->
+<section class="bg-gray-50 py-24" id="faqs">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button type="button" onclick="toggleFAQ(1)" class="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-gray-100 transition">
+          <span class="text-left font-medium text-gray-800">Can I customize my availability?</span>
+          <svg id="icon-1" class="w-5 h-5 text-gray-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-1" class="px-6 py-4 bg-white hidden">
+          <p class="text-gray-600">Yes! You can set your availability per day, per service, or even by team member.</p>
+        </div>
+      </div>
+
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button type="button" onclick="toggleFAQ(2)" class="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-gray-100 transition">
+          <span class="text-left font-medium text-gray-800">Do I need a credit card to sign up?</span>
+          <svg id="icon-2" class="w-5 h-5 text-gray-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-2" class="px-6 py-4 bg-white hidden">
+          <p class="text-gray-600">Nope. Get started for free—no credit card required.</p>
+        </div>
+      </div>
+
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button type="button" onclick="toggleFAQ(3)" class="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-gray-100 transition">
+          <span class="text-left font-medium text-gray-800">Can I sync with Google or Outlook Calendar?</span>
+          <svg id="icon-3" class="w-5 h-5 text-gray-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-3" class="px-6 py-4 bg-white hidden">
+          <p class="text-gray-600">Yes. You can sync with Google Calendar, Outlook, or iCal for real-time updates.</p>
+        </div>
+      </div>
+
+      <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <button type="button" onclick="toggleFAQ(4)" class="w-full flex justify-between items-center px-6 py-4 bg-white hover:bg-gray-100 transition">
+          <span class="text-left font-medium text-gray-800">How do reminders work?</span>
+          <svg id="icon-4" class="w-5 h-5 text-gray-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="faq-4" class="px-6 py-4 bg-white hidden">
+          <p class="text-gray-600">We send automated email or SMS reminders based on your settings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white py-24">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-4">Start Scheduling Smarter Today</h2>
+    <p class="text-lg mb-8">No credit card. No spam. Just peace of mind and more bookings.</p>
+    <a href="{% url 'register' %}" class="bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg shadow hover:bg-gray-100 transition">
+      Get Started Free
+    </a>
+  </div>
+</section>
+
+<script>
+  function toggleFAQ(i) {
+    const ans = document.getElementById(`faq-${i}`);
+    const icon = document.getElementById(`icon-${i}`);
+    ans.classList.toggle('hidden');
+    icon.classList.toggle('rotate-180');
+  }
+</script>
+
+{% endblock %}

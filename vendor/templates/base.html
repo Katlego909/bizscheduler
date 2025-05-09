@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}BizScheduler{% endblock %}</title>
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  {% comment %} Google Fonts {% endcomment %}
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- css/global.css -->
+  <link rel="stylesheet" href="{% static 'css/global.css' %}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow" style="position: sticky; top: 0; z-index: 1000;">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-blue-600">BizScheduler</a>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button id="nav-toggle" class="md:hidden text-gray-600 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Links (Desktop) -->
+      <div id="nav-menu" class="hidden md:flex md:items-center gap-6 text-sm">
+        {% if user.is_authenticated %}
+          
+          {% if user.is_vendor %}
+            <span class="text-gray-600">Hi, {{ user.username }}</span>
+            <a href="{% url 'vendor_dashboard' %}"   class="text-gray-700 hover:text-blue-600">Dashboard</a>
+            <a href="{% url 'vendor_services' %}"    class="text-gray-700 hover:text-blue-600">Services</a>
+            <a href="{% url 'create_service' %}"     class="text-gray-700 hover:text-blue-600">Create Service</a>
+            <a href="{% url 'vendor_bookings' %}"    class="text-gray-700 hover:text-blue-600">Bookings</a>
+            <a href="{% url 'manage_availability' %}"    class="text-gray-700 hover:text-blue-600">Availability</a>
+            <a href="{% url 'vendor_calendar' %}"    class="text-gray-700 hover:text-blue-600">Calendar</a>
+            <a href="{% url 'logout' %}"             class="text-red-600 hover:underline">Logout</a>
+
+          {% elif user.is_client %}
+            <span class="text-gray-600">Hi, {{ user.username }}</span>
+            <a href="{% url 'client_bookings' %}"    class="text-gray-700 hover:text-blue-600">My Bookings</a>
+            <a href="{% url 'logout' %}"             class="text-red-600 hover:underline">Logout</a>
+          {% endif %}
+
+        {% else %}
+          <a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}" class="text-blue-600 hover:underline">Login</a>
+          {% comment %} <span class="hidden md:inline mx-2">|</span> {% endcomment %}
+          <a href="{% url 'register' %}" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:underline">Register</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="md:hidden px-4 pb-4 hidden">
+      {% if user.is_authenticated %}
+
+        {% if user.is_vendor %}
+          <a href="{% url 'vendor_dashboard' %}"   class="block py-2 text-sm text-gray-700 hover:text-blue-600">Dashboard</a>
+          <a href="{% url 'vendor_services' %}"    class="block py-2 text-sm text-gray-700 hover:text-blue-600">Services</a>
+          <a href="{% url 'create_service' %}"     class="block py-2 text-sm text-gray-700 hover:text-blue-600">Create Service</a>
+          <a href="{% url 'vendor_bookings' %}"    class="block py-2 text-sm text-gray-700 hover:text-blue-600">Bookings</a>
+          <a href="{% url 'manage_availability' %}"    class="block py-2 text-sm text-gray-700 hover:text-blue-600">Availability</a>
+          <a href="{% url 'vendor_calendar' %}"    class="block py-2 text-sm text-gray-700 hover:text-blue-600">Calendar</a>
+          <a href="{% url 'logout' %}"             class="block py-2 text-sm text-red-600 hover:underline">Logout</a>
+
+        {% elif user.is_client %}
+          <a href="{% url 'client_bookings' %}"    class="block py-2 text-sm text-gray-700 hover:text-blue-600">My Bookings</a>
+          <a href="{% url 'logout' %}"             class="block py-2 text-sm text-red-600 hover:underline">Logout</a>
+        {% endif %}
+
+      {% else %}
+        <a href="{% url 'login' %}"    class="block py-2 text-sm text-blue-600 hover:underline">Login</a>
+        <a href="{% url 'register' %}" class="block py-2 text-sm text-blue-600 hover:underline">Register</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block extra_scripts %}
+  <script>
+    document.getElementById('nav-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  {% endblock %}
+</body>
+</html>

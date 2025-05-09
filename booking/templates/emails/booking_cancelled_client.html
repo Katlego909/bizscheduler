@@ -1,0 +1,15 @@
+<!-- templates/emails/booking_cancelled_client.html -->
+<!DOCTYPE html>
+<html>
+  <body style="font-family: sans-serif; line-height:1.6; color: #333;">
+    <h1 style="color:#DC2626;">Your Booking Was Cancelled</h1>
+    <p>Hi {{ client_name }},</p>
+    <p>Unfortunately your booking for <strong>{{ booking.service.name }}</strong> on <strong>{{ booking.date|date:"F j, Y" }}</strong> at <strong>{{ booking.time|time:"g:i a" }}</strong> was cancelled.</p>
+
+    {% if reason %}
+      <p><em>Reason:</em> {{ reason }}</p>
+    {% endif %}
+
+    <p>If you’d like to reschedule, please visit <a href="{{ vendor.get_booking_url }}">{{ vendor.business_name }}’s booking page</a>.</p>
+  </body>
+</html>
